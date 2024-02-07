@@ -3,33 +3,45 @@
 
 event_inherited();
 
+show_debug_message(spr_spd);
 
 
 switch(state){
 
-	case "parry":{
-		
-		xscale = sign(x - obj_player.x);
-	
-		spr = spr_dummy_parry;
-		
-		
-	
-	break;
-	}//termina case parry
+
 
 	case "idle":{
 		
 		xscale = sign(x - obj_player.x);
-		
-		
-		if troca_estado <= 0 state = choose("prepare_atirar", "parry", "prepare_dash"); else troca_estado--;
-		
-		
-		spr = spr_dummy;
+
+		muda_sprite(0);
 	
 	break;
 	}//termina case idle
+	
+	case "hit":{
+	
+		
+		muda_sprite(1);
+		
+		termina_animacao();
+	break;
+	}
+	
+	//////////////////////////////////////////////////////////////////////
+	
+	#region estados de combate
+	
+	case "parry":{
+	
+		xscale = sign(x - obj_player.x);
+		
+		spr = spr_dummy_parry;
+		
+	
+	break;
+	}//termina case parry
+	
 	
 	case "prepare_dash":{
 		
@@ -43,11 +55,7 @@ switch(state){
 	}//termina prepare dash
 	
 	case "dash":{
-		
-		
-		
-		troca_estado = 40;
-		
+
 		tempo_dash = 30;
 		
 		spr = spr_dummy_dash;
@@ -82,7 +90,7 @@ switch(state){
 		
 		spr = spr_dummy_prepare_tiro
 	
-		troca_estado = 30;
+		
 		
 		tempo_atirar=40;
 		
@@ -100,15 +108,11 @@ switch(state){
 	break;
 	}
 	
-	case "trocar":{
-	
-		if troca_estado <= 0 state = choose("prepare_atirar", "parry", "prepare_dash"); else troca_estado--;
-	
-	}
+	#endregion
 
 }//termina switch
 
-show_debug_message(troca_estado);
+
 
 
 

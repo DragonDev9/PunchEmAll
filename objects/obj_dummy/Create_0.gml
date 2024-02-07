@@ -1,7 +1,7 @@
 
 event_inherited();
 
-spr = spr_dummy;
+spr = spr_punk;
 
 state = "idle";
 
@@ -11,10 +11,23 @@ destinos = 0;
 
 dash_spd = 30;
 
+sprites = [
+
+	//idle
+	[spr_punk],
+	
+	//hit
+	[spr_punk_hit]
+	
+
+
+
+
+]
+
 /////////////////////////////
 
 tempo_atirar = 40;
 
-troca_estado = 30;
 
-randomize();
+

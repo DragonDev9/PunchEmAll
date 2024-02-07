@@ -52,7 +52,7 @@ tempo_parry = 0;
 
 muda_sprite = function(_ind){
 
-	if spr !=  sprites[mov_state][_ind]{
+	if spr !=  sprites[_ind][0]{
 	
 		spr_index = 0;
 		
@@ -60,19 +60,34 @@ muda_sprite = function(_ind){
 	
 	///////////////////////////////////
 	
-	if state != "punch" && state != "kick"{
+	switch(state){
 	
-		spr_spd = .3;
-
-	}else{
-
-		spr_spd = .4;
-
+		case "punch":{
+		
+			spr_spd = .4;
+	
+		break;
+		}
+		
+		case "kick":{
+		
+			spr_spd = .3;
+	
+		break;
+		}
+		
+		default:{
+		
+			spr_spd = .3;
+		
+		break;
+		}
+	
 	}
 	
 	////////////////////////////////////
 
-	spr = sprites[mov_state][_ind];
+	spr = sprites[_ind][0];
 	
 	spr_num = sprite_get_number(spr)
 	
@@ -81,6 +96,8 @@ muda_sprite = function(_ind){
 	spr_index %= spr_num;
 
 }//termina muda sprite
+
+///////////////////////////////////////////////////
 
 ///@function termina_animacao
 termina_animacao = function(_hitbox = false, _xx = 0, _yy = 0, _dmg = 0, _criador = obj_entidades){

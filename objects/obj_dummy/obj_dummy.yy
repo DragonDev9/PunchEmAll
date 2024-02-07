@@ -34,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_dummy",
-    "path": "sprites/spr_dummy/spr_dummy.yy",
+    "name": "spr_punk",
+    "path": "sprites/spr_punk/spr_punk.yy",
   },
   "spriteMaskId": null,
   "visible": true,

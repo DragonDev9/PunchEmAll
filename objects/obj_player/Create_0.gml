@@ -86,19 +86,13 @@ muda_estado = function(){
 	switch(state){
 	
 		case "idle": {
-		
-			
-		
+
 			mov();
-			
-			mov_state = 0;
-			
+	
 			muda_sprite(0);
 			
 			attacks();
-			
-			
-		
+
 		break;
 		}//termina case idle
 	
@@ -107,9 +101,8 @@ muda_estado = function(){
 			
 			mov();
 			
-			mov_state = 1;
 		
-			muda_sprite(0);
+			muda_sprite(1);
 		
 			attacks();
 			
@@ -124,13 +117,12 @@ muda_estado = function(){
 			hsp = 0;
 			vsp = 0;
 		
-			mov_state = 2;
 			
-			muda_sprite(0);
+			muda_sprite(2);
 			
 			//criando o hitbox do ataque
 			
-			var _xx = x + (xscale * sprite_get_width(spr_col)/2);
+			var _xx = x + (xscale * (sprite_get_width(spr_dmg)*2)/2);
 			var _yy = y - sprite_get_height(spr)*.2;
 			
 			
@@ -146,13 +138,11 @@ muda_estado = function(){
 			
 			hsp = 0;
 			vsp = 0;
-			
-			mov_state = 3;
-			
-			muda_sprite(0);
+					
+			muda_sprite(3);
 			
 			
-			var _xx = x + (xscale * sprite_get_width(spr_col)/2);
+			var _xx = x + (xscale * (sprite_get_width(spr_dmg)*2)/2);
 			var _yy = y - sprite_get_height(spr)*.2;
 			
 			
@@ -162,10 +152,9 @@ muda_estado = function(){
 		}//termina heavy 
 	
 		case "parried":{
-		
-			mov_state = 4;
+	
 			
-			muda_sprite(0);
+			muda_sprite(4);
 			
 			termina_animacao();
 		

@@ -1,1 +1,0 @@
-obj_entidades.hit = 0;
