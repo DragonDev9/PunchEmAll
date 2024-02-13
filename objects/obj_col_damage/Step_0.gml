@@ -3,8 +3,4 @@
 
 
 
-
-
-
-
-
+instance_destroy(id);

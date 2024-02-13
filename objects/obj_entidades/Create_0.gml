@@ -64,21 +64,21 @@ muda_sprite = function(_ind){
 	
 		case "punch":{
 		
-			spr_spd = .4;
+			spr_spd = .3;
 	
 		break;
 		}
 		
 		case "kick":{
 		
-			spr_spd = .3;
+			spr_spd = .2;
 	
 		break;
 		}
 		
 		default:{
 		
-			spr_spd = .3;
+			spr_spd = .4;
 		
 		break;
 		}
@@ -100,7 +100,7 @@ muda_sprite = function(_ind){
 ///////////////////////////////////////////////////
 
 ///@function termina_animacao
-termina_animacao = function(_hitbox = false, _xx = 0, _yy = 0, _dmg = 0, _criador = obj_entidades){
+termina_animacao = function(_hitbox = false, _xx = 0 , _yy = 0,_dmg = 0, _criador = obj_entidades){
 
 	
 	var _terminar = spr_index+spr_spd >= spr_num && tempo_parry = 0;
@@ -111,13 +111,22 @@ termina_animacao = function(_hitbox = false, _xx = 0, _yy = 0, _dmg = 0, _criado
 	if _terminar{
 			
 				if _hitbox{
+					
 				
 					var _box = instance_create_layer(_xx, _yy,layer,obj_col_damage);
 					
 					_box.dmg = _dmg;
 				
 					_box.criado_por = _criador;
-				}
+					
+					switch(_criador){
+					
+						case obj_player: audio_play_sound(sfx_player_punch,0,0); break;
+						case obj_punk: audio_play_sound(sfx_player_punch,0,0); break;
+					
+					}//termina switch
+					
+				}//termina if _hitbox
 				
 				state = "idle";
 			

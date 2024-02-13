@@ -23,6 +23,9 @@ sprites = [
 	//kick attack
 	[spr_player_girl_kick],
 	
+	//hit
+	[spr_player_girl_hit],
+	
 	//parried
 	[spr_player_parried]
 ];
@@ -111,7 +114,8 @@ muda_estado = function(){
 		break;
 		}//termina case moving
 	
-
+		#region COMBATE
+		
 		case "punch":{
 		
 			hsp = 0;
@@ -121,18 +125,18 @@ muda_estado = function(){
 			muda_sprite(2);
 			
 			//criando o hitbox do ataque
-			
-			var _xx = x + (xscale * (sprite_get_width(spr_dmg)*2)/2);
+
+			var _xx = x + ((xscale * (sprite_get_width(spr_dmg)*2))/2);
 			var _yy = y - sprite_get_height(spr)*.2;
 			
 			
 			
-			////////////////////
-			
-			termina_animacao(true,_xx,_yy,1, obj_player);
+			termina_animacao(true, _xx, _yy, 1, obj_player);
 		
 		break;
 		}//termina light
+		
+		//
 		
 		case "kick":{
 			
@@ -141,27 +145,42 @@ muda_estado = function(){
 					
 			muda_sprite(3);
 			
-			
-			var _xx = x + (xscale * (sprite_get_width(spr_dmg)*2)/2);
+			var _xx = x + ((xscale * (sprite_get_width(spr_dmg)*2))/2);
 			var _yy = y - sprite_get_height(spr)*.2;
-			
-			
-			termina_animacao(true, _xx, _yy, 2, obj_player);
+
+			termina_animacao(true, _xx, _yy, 1, obj_player);
 		
 		break;
-		}//termina heavy 
+		}//termina kick
+		
+		//
 	
 		case "parried":{
 	
+			hsp = 0;
+			vsp = 0;
 			
+			termina_animacao();
+		
+		}//termina parried
+		
+		//
+		
+		case "hit":{
+		
+			hsp = 0;
+			vsp = 0;
+		
 			muda_sprite(4);
 			
 			termina_animacao();
 		
+		break;
 		}
 	
+	#endregion
+	
 	}//termina swtich state
-
-
+	
 
 }//termina muda estado
