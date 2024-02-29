@@ -43,9 +43,9 @@ spr_spd = .1;
 //estado
 state = "idle";
 
-//dmg
-hit = 0;
-tempo_parry = 0;
+//combate
+hit = true;
+
 
 #endregion
 
@@ -64,21 +64,21 @@ muda_sprite = function(_ind){
 	
 		case "punch":{
 		
-			spr_spd = .3;
+			spr_spd = .2;
 	
 		break;
 		}
 		
 		case "kick":{
 		
-			spr_spd = .2;
+			spr_spd = .1;
 	
 		break;
 		}
 		
 		default:{
 		
-			spr_spd = .4;
+			spr_spd = .3;
 		
 		break;
 		}
@@ -94,19 +94,19 @@ muda_sprite = function(_ind){
 	spr_index += spr_spd;
 	
 	spr_index %= spr_num;
+	
+	
 
 }//termina muda sprite
 
 ///////////////////////////////////////////////////
 
 ///@function termina_animacao
-termina_animacao = function(_hitbox = false, _xx = 0 , _yy = 0,_dmg = 0, _criador = obj_entidades){
+termina_animacao = function(_hitbox = false, _xx = 0 , _yy = 0,_dmg = 0, _criador = obj_entidades, _state = "idle"){
 
 	
-	var _terminar = spr_index+spr_spd >= spr_num && tempo_parry = 0;
-	var _parry = spr_index + spr_spd >= spr_num && tempo_parry > 0;
+	var _terminar = spr_index+spr_spd >= spr_num;
 
-	if tempo_parry > 0 tempo_parry--;
 
 	if _terminar{
 			
@@ -128,16 +128,41 @@ termina_animacao = function(_hitbox = false, _xx = 0 , _yy = 0,_dmg = 0, _criado
 					
 				}//termina if _hitbox
 				
-				state = "idle";
+				state = _state;
 			
-	}else if _parry{
-	
-		spr_index = spr_num+1;
-	
 	}
 
 
 }//termina animacao
+
+/////////////////////////////////////////////////////////////
+
+attacking = function(_dmg, _obj){
+
+
+	//criando o hitbox do ataque
+
+
+	if _obj = obj_player{
+		var _xx = x + ((xscale * (sprite_get_width(spr_dmg)*2))/2);
+	}else if _obj = obj_punk{
+		var _xx = x - ((xscale * (sprite_get_width(spr_dmg)*2))/2);
+	}
+	
+	var _yy = y - sprite_get_height(spr)*.2;
+	
+
+	
+	hit = spr_index < spr_num-1 ? false : true;
+	
+
+	
+	
+	termina_animacao(true, _xx, _yy, _dmg, _obj);
+
+
+}
+
 
 /////////////////////////////////////////////////////////////
 
@@ -155,3 +180,11 @@ grav = function(){
 
 }//termina grav
 
+//////////////////////////////////////////////////////////////////
+
+zera_mov = function(){
+
+	hsp = 0;
+	vsp = 0;
+
+}

@@ -6,3 +6,5 @@ event_inherited();
 
 controla_estado();
 
+pos_player();
+

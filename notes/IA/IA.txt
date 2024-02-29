@@ -1,0 +1,2 @@
+- Ele se aproximará até o jogador
+- Quando estiver perto, terá uma ação

@@ -79,6 +79,8 @@ mov = function(){
 //////////////////////////////////////////////////////////////////////
 	
 
+
+
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -100,17 +102,12 @@ muda_estado = function(){
 		}//termina case idle
 	
 		case "moving":{
-		
-			
+
 			mov();
-			
-		
 			muda_sprite(1);
 		
 			attacks();
-			
-			
-		
+
 		break;
 		}//termina case moving
 	
@@ -118,20 +115,11 @@ muda_estado = function(){
 		
 		case "punch":{
 		
-			hsp = 0;
-			vsp = 0;
-		
-			
+			zera_mov();
+
 			muda_sprite(2);
 			
-			//criando o hitbox do ataque
-
-			var _xx = x + ((xscale * (sprite_get_width(spr_dmg)*2))/2);
-			var _yy = y - sprite_get_height(spr)*.2;
-			
-			
-			
-			termina_animacao(true, _xx, _yy, 1, obj_player);
+			attacking(2, obj_player);
 		
 		break;
 		}//termina light
@@ -140,15 +128,11 @@ muda_estado = function(){
 		
 		case "kick":{
 			
-			hsp = 0;
-			vsp = 0;
-					
+			zera_mov();
+		
 			muda_sprite(3);
 			
-			var _xx = x + ((xscale * (sprite_get_width(spr_dmg)*2))/2);
-			var _yy = y - sprite_get_height(spr)*.2;
-
-			termina_animacao(true, _xx, _yy, 1, obj_player);
+			attacking(5, obj_player);
 		
 		break;
 		}//termina kick
@@ -157,8 +141,8 @@ muda_estado = function(){
 	
 		case "parried":{
 	
-			hsp = 0;
-			vsp = 0;
+			zera_mov();
+			
 			
 			termina_animacao();
 		
@@ -168,9 +152,8 @@ muda_estado = function(){
 		
 		case "hit":{
 		
-			hsp = 0;
-			vsp = 0;
-		
+			zera_mov();
+			
 			muda_sprite(4);
 			
 			termina_animacao();

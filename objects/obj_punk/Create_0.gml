@@ -5,11 +5,17 @@ spr = spr_punk;
 
 state = "idle";
 
-tempo_dash = 60;
+max_hsp=.1;
 
-destinos = 0;
+max_vsp=.1;
 
-dash_spd = 30;
+//vars de combate
+
+punch_timer_max = 40;
+
+punch_timer = punch_timer_max;
+
+
 
 sprites = [
 
@@ -20,13 +26,68 @@ sprites = [
 	[spr_punk_hit],
 	
 	//punch
-	[spr_punk_punch]
+	[spr_punk_punch],
+	
+	//walking
+	[spr_punk_chasing]
 
 
 
 ]
 
 /////////////////////////////
+
+pos_player = function(){
+
+	 _player_x = obj_player.x;
+	 _player_y = obj_player.y;
+
+}
+
+perseguindo_player = function(){
+
+	var _perto = point_distance(x, y, _player_x, _player_y);
+
+	show_debug_message(_perto);
+	
+	while _perto >= 90{
+	
+		hsp-=max_hsp*xscale;
+		
+		muda_sprite(3);
+		
+		if _perto <= 43 && punch_timer <= 0{
+		
+			state = "punch"
+			
+			break;
+		}else if _perto <= 43 && punch_timer >= 1{
+		
+			muda_sprite(0);
+			
+			state = "idle";
+			
+			break;
+			
+		}
+
+	break;
+	}
+
+}
+
+verifica_pos_player = function(){
+
+		
+	punch_timer--;
+	
+	perseguindo_player();
+
+}
+
+
+
+////////////////////////////
 
 controla_estado = function(){
 
@@ -37,24 +98,32 @@ controla_estado = function(){
 
 	case "idle":{
 		
-		hsp = 0;
-		vsp = 0;
+		zera_mov();
 
 		muda_sprite(0);
+		
+		
 	
 	break;
 	}//termina case idle
 	
 	case "hit":{
 		
-		hsp = 0;
-		vsp = 0;
+		zera_mov();
 
 		muda_sprite(1);
 		
 		termina_animacao();
+		
 	break;
 	}
+	
+	case "chasing": {
+	
+		verifica_pos_player();
+	
+	break;
+	}//termina case chasing
 	
 	//////////////////////////////////////////////////////////////////////
 	
@@ -73,21 +142,18 @@ controla_estado = function(){
 	
 	case "punch":{
 		
-		hsp = 0;
-		vsp = 0;
+		punch_timer = punch_timer_max;
+		
+		zera_mov();
 		
 		muda_sprite(2);
 	
-		
-		var _xx = x - ((xscale * (sprite_get_width(spr_dmg)*2))/2);
-		var _yy = y - sprite_get_height(spr)*.2;
-		
-		termina_animacao(true,_xx,_yy,1,obj_punk);
-		
-		
-		
+		attacking(1, obj_punk);
+	
 		break;
 	}
+	
+	
 	
 	#endregion
 
@@ -97,4 +163,15 @@ controla_estado = function(){
 }//termina function
 
 
+	
+visao = function(){
+
+
+	if collision_circle(x,y,130,obj_player,true,true) && state = "idle"{
+	
+		state = "chasing";
+		
+	}
+
+}//termina visao
 

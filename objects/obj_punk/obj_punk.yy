@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "dummy",
-    "path": "folders/Objects/dummy.yy",
+    "name": "enemy",
+    "path": "folders/Objects/enemy.yy",
   },
   "parentObjectId": {
     "name": "obj_entidades",

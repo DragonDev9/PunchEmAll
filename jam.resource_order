@@ -6,7 +6,7 @@
     {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"control","order":3,"path":"folders/Objects/control.yy",},
-    {"name":"dummy","order":5,"path":"folders/Objects/dummy.yy",},
+    {"name":"enemy","order":5,"path":"folders/Objects/enemy.yy",},
     {"name":"player","order":2,"path":"folders/Objects/player.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
     {"name":"Paths","order":4,"path":"folders/Paths.yy",},
@@ -15,6 +15,7 @@
     {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":3,"path":"folders/Sounds.yy",},
+    {"name":"sfx","order":1,"path":"folders/Sounds/sfx.yy",},
     {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
     {"name":"assessories","order":4,"path":"folders/Sprites/assessories.yy",},
     {"name":"place_holder","order":1,"path":"folders/Sprites/assessories/place_holder.yy",},
@@ -26,7 +27,6 @@
     {"name":"place holder","order":4,"path":"folders/Sprites/Player/place holder.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"sfx","order":1,"path":"folders/Sounds/sfx.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_col","order":1,"path":"objects/obj_col/obj_col.yy",},
@@ -50,5 +50,6 @@
     {"name":"spr_tileset_1","order":2,"path":"sprites/spr_tileset_1/spr_tileset_1.yy",},
     {"name":"spr_punk_punch","order":2,"path":"sprites/spr_punk_punch/spr_punk_punch.yy",},
     {"name":"spr_player_girl_moving","order":2,"path":"sprites/spr_player_girl_moving/spr_player_girl_moving.yy",},
+    {"name":"spr_punk_chasing","order":3,"path":"sprites/spr_punk_chasing/spr_punk_chasing.yy",},
   ],
 }
